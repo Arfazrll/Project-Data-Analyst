@@ -103,12 +103,12 @@ datetime_columns = [
     "shipping_limit_date",
 ]
 for column in datetime_columns:
-    df[column] = pd.to_datetime(df[column])
+    final_df[column] = pd.to_datetime(final_df[column])
 
-df["total_price"] = df["price"] + df["freight_value"]
+final_df["total_price"] = final_df["price"] + final_df["freight_value"]
 
-min_date = df["order_purchase_timestamp"].min().date()
-max_date = df["order_purchase_timestamp"].max().date()
+min_date = final_df["order_purchase_timestamp"].min().date()
+max_date = final_df["order_purchase_timestamp"].max().date()
 
 with st.sidebar:
     st.image("SamplePhoto.jpg")  
@@ -119,8 +119,8 @@ with st.sidebar:
         value=[min_date, max_date]
     )
 
-main_df = df[(df["order_purchase_timestamp"].dt.date >= start_date) & 
-             (df["order_purchase_timestamp"].dt.date <= end_date)]
+main_df = final_df[(final_df["order_purchase_timestamp"].dt.date >= start_date) & 
+                  (final_df["order_purchase_timestamp"].dt.date <= end_date)]
 
 daily_orders_df = create_daily_orders_df(main_df)
 bystate_df = create_bystate_df(main_df)
