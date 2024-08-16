@@ -92,7 +92,7 @@ def create_rfm_df(df):
     plt.tight_layout()
     return rfm_df
 
-final_df = pd.read_csv("all_data.csv")
+final_df = pd.read_csv("Dashboard/all_data.csv")
 
 datetime_columns = [
     "order_purchase_timestamp",
