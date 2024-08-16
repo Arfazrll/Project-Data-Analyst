@@ -93,7 +93,7 @@ def create_rfm_df(df):
     return rfm_df
 
 file_path = 'all_data.csv'  # Replace with the correct path if necessary
-df = pd.read_csv(file_path)
+df = pd.read_csv('all_data.csv')
 
 datetime_columns = [
     "order_purchase_timestamp",
